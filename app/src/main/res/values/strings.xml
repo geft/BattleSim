@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">BattleSim</string>
+    <string name="title_activity_main">MainActivity</string>
+
+    <string name="character_warrior">Warrior</string>
+    <string name="character_warrior_description">Physical</string>
+    <string name="character_wizard">Wizard</string>
+    <string name="character_wizard_description">Magical</string>
+    <string name="character_rogue">Rogue</string>
+    <string name="character_rogue_description">Fast</string>
 </resources>
