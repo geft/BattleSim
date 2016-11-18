@@ -7,23 +7,22 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import com.lifeof843.battlesim.character.Character
 import com.lifeof843.battlesim.databinding.ActivityMainBinding
-import java.util.*
 
 class MainActivity : AppCompatActivity() {
 
-    private var binding: ActivityMainBinding = ActivityMainBinding()
+    private var binding: ActivityMainBinding? = null
     private val model: MainModel = MainModel()
     private val view: MainView = MainView()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        initBinding()
+        bindView()
     }
 
-    private fun initBinding() {
+    private fun bindView() {
         binding = DataBindingUtil.setContentView<ActivityMainBinding>(this, R.layout.activity_main)
-        binding.view = view
+        binding?.view = view
     }
 
     override fun onStart() {
@@ -33,32 +32,22 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initCharacterList() {
-        val characters = characters
-
-        val characterStrings = ArrayList<String>()
-
-        for (character in characters) {
-            characterStrings.add(character.name)
-        }
-
+        val characters = model.populateCharacters()
+        val characterStrings = characters.map { it.name }.sorted()
         val adapter = getCharacterListAdapter(characterStrings)
-        binding.listView.adapter = adapter
-        binding.listView.onItemClickListener = AdapterView.OnItemClickListener {
+
+        binding?.listView?.adapter = adapter
+        binding?.listView?.onItemClickListener = AdapterView.OnItemClickListener {
             adapterView, view, i, l -> handleItemClick(i, characters)
         }
     }
 
-    private fun handleItemClick(i: Int, characters: List<com.lifeof843.battlesim.character.Character>) {
-        val text = model.displayCharacterDetail(characters[i])
-        Toaster.showToast(text)
+    private fun handleItemClick(i: Int, characters: List<Character>) {
+        val description = model.displayCharacterDetail(characters[i])
+        Toasts(this).showToast(description)
     }
 
     private fun getCharacterListAdapter(characters: List<String>): ArrayAdapter<String> {
-        val adapter = ArrayAdapter<String>(this, android.R.layout.activity_list_item)
-        adapter.addAll(characters)
-        return adapter
+        return ArrayAdapter(this, android.R.layout.simple_list_item_1, characters)
     }
-
-    private val characters: List<Character>
-        get() = model.populateCharacters()
 }

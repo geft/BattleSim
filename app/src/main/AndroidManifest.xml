@@ -4,6 +4,7 @@
     package="com.lifeof843.battlesim">
 
     <application
+        android:name=".App"
         android:allowBackup="true"
         android:fullBackupContent="false"
         android:icon="@mipmap/ic_launcher"
@@ -14,7 +15,6 @@
 
         <activity
             android:name=".MainActivity"
-            android:label="@string/title_activity_main"
             android:theme="@style/AppTheme.NoActionBar" >
 
             <intent-filter>

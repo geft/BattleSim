@@ -24,8 +24,8 @@ internal class MainModel {
         return list
     }
 
-    fun displayCharacterDetail(character: com.lifeof843.battlesim.character.Character): String {
-        return character.name + " - " + character.description
+    fun displayCharacterDetail(character: Character): String {
+        return character.description
     }
 
     private fun characterHashMap(): HashMap<CharacterClass, Character> {

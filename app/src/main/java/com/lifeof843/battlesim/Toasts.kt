@@ -1,13 +1,15 @@
 package com.lifeof843.battlesim
 
+import android.content.Context
 import android.widget.Toast
 
 /**
  * Created by gerryjuans on 11/18/16.
  */
 
-object Toaster {
+class Toasts(val context: Context) {
+
     fun showToast(text: String) {
-        Toast.makeText(App.getInstance(), text, Toast.LENGTH_SHORT).show()
+        Toast.makeText(context, text, Toast.LENGTH_SHORT).show()
     }
 }

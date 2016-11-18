@@ -8,6 +8,6 @@ import android.support.annotation.StringRes
 
 object Resources {
     fun getString(@StringRes stringRes: Int): String {
-        return App.getInstance().getString(stringRes)
+        return App.context!!.getString(stringRes)
     }
 }

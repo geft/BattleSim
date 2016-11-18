@@ -36,8 +36,10 @@ dependencies {
     compile 'io.reactivex:rxjava:1.1.6'
     compile 'com.android.support.constraint:constraint-layout:1.0.0-beta4'
     compile 'com.android.support:design:25.0.0'
-    testCompile 'junit:junit:4.12'
     compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    kapt "com.android.databinding:compiler:$android_plugin_version"
+
+    testCompile 'junit:junit:4.12'
 }
 
 kapt {

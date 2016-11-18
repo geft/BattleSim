@@ -8,11 +8,8 @@ import com.lifeof843.battlesim.Resources
  */
 
 class Rogue : Character {
-    override fun getName(): String {
-        return Resources.getString(R.string.character_rogue)
-    }
-
-    override fun getDescription(): String {
-        return Resources.getString(R.string.character_rogue_description)
-    }
+    override val name: String
+        get() = Resources.getString(R.string.character_rogue)
+    override val description: String
+        get() = Resources.getString(R.string.character_rogue_description)
 }
